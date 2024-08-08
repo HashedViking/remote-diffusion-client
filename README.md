@@ -20,25 +20,33 @@
 </p>
 
 
-## 🧐 About <a name = "about"></a>
+## About <a name = "about"></a>
 
 Remote Diffusion client app. Only Windows support at the moment. Create a one-click tunnel to your local [Stable Diffusion Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui). If you want to self-host the backend, check this repo: [Server](https://github.com/HashedViking/remote-diffusion-client)
 
-## 🙏 Help <a name = "help"></a>
+## Usage <a name = "usage"></a>
+
+1. Press "Register a New Key"
+2. Set SDWebUI starting point (usually webui-user.bat)
+3. Set file server folder. Models folder, for example, to remotely download models
+4. Set login/password for extra security
+5. Press "Start"
+
+## Contribution <a name = "help"></a>
 
 Any improvements to the build process or source code are greatly appreciated.
 
-## 📝 TODO <a name = "todo"></a>
+## TODO <a name = "todo"></a>
 
 - [ ] Address Windows Defender's aggression towards frpc.exe
 - [ ] Improve development and production workflows
 - [ ] Linux support
 
-## ⛏️ Built Using <a name = "built_using"></a>
+## Built Using <a name = "built_using"></a>
 
 - [Electron](https://www.electronjs.org/) - Interface
 - [Frp](https://github.com/fatedier/frp) - Tunnel
 
-## ✍️ Authors <a name = "authors"></a>
+## Authors <a name = "authors"></a>
 
 - [@hashedviking](https://github.com/HashedViking) - Idea & Initial work
