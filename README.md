@@ -19,14 +19,6 @@
     <br> 
 </p>
 
-## 📖 Table of Contents
-
-- [📖 Table of Contents](#-table-of-contents)
-- [🧐 About ](#-about-)
-- [🙏 Help ](#-help-)
-- [📝 TODO ](#-todo-)
-- [⛏️ Built Using ](#️-built-using-)
-- [✍️ Authors ](#️-authors-)
 
 ## 🧐 About <a name = "about"></a>
 
