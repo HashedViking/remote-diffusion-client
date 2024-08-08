@@ -1,0 +1,292 @@
+@font-face {
+    font-family: 'Roboto Mono';
+    src: url('./fonts/RobotoMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+@font-face {
+    font-family: 'Roboto Mono';
+    src: url('./fonts/RobotoMono-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('./fonts/PressStart2P-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #202020;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.background-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    background-color: #202020;
+    background-image: url('./images/status-back-pattern.png');
+    background-repeat: repeat;
+    width: 100vw;
+    height: 100vh;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 16px;
+}
+
+.logo-text {
+    color: #ECECEB;
+    font-size: 18px;
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.margin-right-20 {
+    margin-right: 20px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.margin-bottom-32 {
+    margin-bottom: 32px;
+}
+
+.server {
+    width: 780px;
+    /* height: 820px; */
+    border-radius: 20px;
+    opacity: 0.97;
+    background: none;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.server-block {
+    width: 100%;
+    /* height: 240px; */
+    border-radius: 20px;
+    opacity: 0.97;
+    background: #434343;
+    padding: 40px;
+    display: flex; 
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.horizontal-align {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.status-titles {
+    flex: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    display: flex;
+    gap: 10px;
+}
+
+.status-titles h2 {
+    color: #ECECEB;
+    font-family: "Press Start 2P";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    min-width: 160px;
+    max-width: 160px;
+}
+
+.status-titles h3 {
+    color: #AAD160;
+    font-family: "Roboto Mono";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 19.2px */
+}
+
+.status-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-key-title {
+    color: var(--White, #ECECEB);
+    font-family: "Press Start 2P";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.key-form {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.key-input {
+    width: 360px;
+    height: 30px;
+    padding: 10px 0;
+    background: #434343;
+    color: inherit;
+    border: none; 
+    outline: inherit;
+    font: inherit; 
+    cursor: text; 
+    border-bottom: 1px solid #777;
+    text-align: left;
+}
+
+.path-input {
+    width: 480px;
+    height: 30px;
+    padding: 10px 0;
+    background: #434343;
+    color: inherit;
+    border: none; 
+    outline: inherit;
+    font: inherit; 
+    cursor: text; 
+    border-bottom: 1px solid #777;
+    text-align: left;
+}
+
+.info-text {
+    color: #AAD160;
+    font-family: "Roboto Mono";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 19.2px */
+}
+
+.input-icon-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-right: 30px;
+    margin-bottom: 10px;
+}
+
+.copy-icon {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    /* margin-left: -50px; */
+}
+
+.copy-message {
+    color: #AAD160;
+    font-family: "Roboto Mono";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 19.2px */
+}
+
+.btn-text {
+    color: #202020;
+    font-family: "Roboto Mono";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 19.2px */
+}
+
+button {
+    background: none; 
+    color: inherit; 
+    border: none;
+    padding: 0; 
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.files-btn {
+    display: inline-flex;
+    padding: 7px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 20px;
+    background: #AAD160;
+    box-sizing: border-box;
+    width: 160px;
+}
+
+.files-btn:hover {
+    background: #d9f3a7;
+}
+
+.server-btn {
+    display: inline-flex;
+    padding: 7px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 20px;
+    background: #A182C9;
+    box-sizing: border-box;
+    width: 160px;
+}
+
+.server-btn:hover {
+    background: #dcc6f9;
+}
+
+.register-key-btn {
+    display: inline-flex;
+    padding: 7px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 20px;
+    background: #e63737;
+    box-sizing: border-box;
+    color: #202020;
+    font-family: "Roboto Mono";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    text-decoration: none;
+}
+
+.entry-path-selector {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}

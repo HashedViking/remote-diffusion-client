@@ -1,0 +1,118 @@
+{
+  "name": "remote-diffusion",
+  "productName": "remote-diffusion",
+  "version": "0.1.0",
+  "description": "Remote Diffusion description",
+  "main": ".webpack/x64/main/index.js",
+  "scripts": {
+    "build": "tsc",
+    "package": "npm run package:dev && npm run package:dist",
+    "package:dev": "npm install --package-lock-only --package dev-package.json && electron-forge package",
+    "package:dist": "npm install --package-lock-only --package dist-package.json && electron-forge package",
+    "make": "npm run make:dist",
+    "make:dist": "electron-forge make --package dist-package.json"
+  },
+  "build": {
+        "productName": "Remote Diffusion",
+        "appId": "com.rd.RemoteDiffusionClient",
+        "asar": false,
+        "files": [
+            "dist/",
+            "node_modules/",
+            "index.html",
+            "main.prod.js",
+            "main.prod.js.map",
+            "package.json",
+            "assets/"
+        ]
+    },
+    "config": {
+        "forge": {
+        "packagerConfig": {
+            "asar": false,
+            "ignore": [
+            "tsconfig.json",
+            "package-lock.json",
+            ".eslintrc.json",
+            ".gitignore",
+            "^/.vscode",
+            "^/node_modules",
+            "^/src",
+            "^/test",
+            "^/out",
+            ".*\\.ts$",
+            ".*\\.tsx$",
+            ".*\\.map$",
+            ".*\\.toml$"
+            ]
+        },
+        "makers": [
+            {
+            "name": "@electron-forge/maker-squirrel",
+            "config": {}
+            },
+            {
+            "name": "@electron-forge/maker-zip",
+            "platforms": [
+                "darwin"
+            ]
+            },
+            {
+            "name": "@electron-forge/maker-deb",
+            "config": {}
+            },
+            {
+            "name": "@electron-forge/maker-rpm",
+            "config": {}
+            }
+        ]
+        }
+    },
+  "keywords": [],
+  "author": {
+    "name": "hashedviking",
+    "email": "astateofapps@gmail.com"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.2.0",
+    "@electron-forge/maker-deb": "^7.2.0",
+    "@electron-forge/maker-rpm": "^7.2.0",
+    "@electron-forge/maker-squirrel": "^7.2.0",
+    "@electron-forge/maker-zip": "^7.2.0",
+    "@electron-forge/plugin-webpack": "^7.4.0",
+    "@types/auto-launch": "^5.0.5",
+    "@types/electron": "^1.6.10",
+    "@types/pidusage": "^2.0.5",
+    "@types/uuid": "^9.0.8",
+    "@types/validator": "^13.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "@vercel/webpack-asset-relocator-loader": "^1.7.3",
+    "copy-webpack-plugin": "^12.0.2",
+    "copyfiles": "^2.4.1",
+    "css-loader": "^6.10.0",
+    "electron": "28.2.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-import": "^2.29.1",
+    "file-loader": "^6.2.0",
+    "fork-ts-checker-webpack-plugin": "^7.3.0",
+    "node-loader": "^2.0.0",
+    "style-loader": "^3.3.4",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "~4.5.4",
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "dependencies": {
+    "auto-launch": "^5.0.6",
+    "axios": "^1.6.7",
+    "electron-settings": "^3.2.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "keytar": "^7.9.0",
+    "pidusage": "^3.0.2",
+    "validator": "^13.11.0"
+  }
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: https://cdnjs.cloudflare.com;"> -->
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="./assets/status-style.css" />
+</head>
+
+<body>
+  <div class="background-container">
+    <div class="server">
+      <div class="server-block">
+        <div class="logo">
+          <img src="./assets/images/logo.png" alt="Logo" class="logo-img">
+          <div class="logo-text">SD WebUI Connection</div>
+        </div>
+      </div>
+
+      <div class="server-block">
+        <div class="status-titles">
+          <div class="status-row">
+            <h2>User Key</h2>
+            <div class="key-form">
+              <div class="input-icon-container">
+                <input id="clientKey" type="text" class="key-input info-text margin-right-20" value="{{.UserKey}}"
+                  readonly>
+                <div id="copyIcon" class="copy-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div id="copyMessage" class="copy-message"></div>
+
+          <div id="entry-path-selector" class="status-row">
+            <h2>SDWebUI</h2>
+            <div class="input-icon-container">
+              <input id="sdWebUIStartScriptPath" type="text" class="path-input info-text margin-right-20" readonly>
+              <label id="fileIcon" class="copy-icon" for="scriptSelector"></label>
+              <input hidden="true" type="file" id="scriptSelector" webkitdirectory />
+            </div>
+          </div>
+
+          <div id="file-server-path-selector" class="status-row margin-bottom-20">
+            <h2>File server folder</h2>
+            <div class="input-icon-container">
+              <input type="text" id="folderPath" class="path-input info-text margin-right-20" readonly />
+              <label id="folderIcon" class="copy-icon" for="folderSelector"></label>
+              <input hidden="true" type="file" id="folderSelector" webkitdirectory directory />
+            </div>
+          </div>
+
+          <div class="status-row">
+            <button class="files-btn btn-text">Open Folder</button>
+            <input type="checkbox" id="allowRemoteRead" />
+            <label for="allowOverwriting" class="info-text">Allow read access over http</label>
+            <input type="checkbox" id="allowOverwriting" />
+            <label for="allowOverwriting" class="info-text">Allow overwriting</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="horizontal-align">
+        <div class="server-block" style="width: 50%;">
+          <div id="auth-container" class="status-titles">
+            <h2>Authentication</h2>
+            <input type="text" id="username" placeholder="Username"
+              class="key-input info-text margin-right-20 margin-bottom-20" style="width: 300px;" />
+            <input type="password" id="password" placeholder="Password"
+              class="key-input info-text margin-right-20 margin-bottom-20" style="width: 300px;"/>
+            <button id="set-auth" class="files-btn btn-text">Set</button>
+          </div>
+        </div>
+      
+        <div class="server-block" style="width: 50%;">
+          <div class="status-titles">
+            <div class="status-row">
+              <h2>Server</h2>
+              <h3 id="server-status">Awaiting status update</h>
+            </div>
+            <div class="status-row">
+              <h2>SDWebUI</h2>
+              <h3 id="sdwebui-status">Awaiting status update</h3>
+            </div>
+            <div class="status-row">
+              <h2>Status</h2>
+              <h3 id="status">Awaiting connection</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="server-block">
+        <button id="start" class="server-btn btn-text margin-right-20"><i class="fas fa-play"></i> Start</button>
+        <button id="register" class="register-key-btn btn-text"
+          title="Register new key in the Remote Diffusion system. Old key will be discarded.">
+          Register A New Key
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- <button id="close-btn">X</button> -->
+
+  <script>
+    const copySvgIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+     <path d="M9 3.25C5.82436 3.25 3.25 5.82436 3.25 9V16.1069C3.25 16.5211 3.58579 16.8569 4 16.8569C4.41421 16.8569 4.75 16.5211 4.75 16.1069V9C4.75 6.65279 6.65279 4.75 9 4.75H16.0129C16.4271 4.75 16.7629 4.41421 16.7629 4C16.7629 3.58579 16.4271 3.25 16.0129 3.25H9Z" fill="#A182C9"/>
+     <path fill-rule="evenodd" clip-rule="evenodd" d="M18.4026 6.79326C15.1616 6.43104 11.8384 6.43104 8.59748 6.79326C7.6742 6.89645 6.93227 7.62304 6.82344 8.55348C6.43906 11.84 6.43906 15.16 6.82344 18.4465C6.93227 19.377 7.6742 20.1035 8.59748 20.2067C11.8384 20.569 15.1616 20.569 18.4026 20.2067C19.3258 20.1035 20.0678 19.377 20.1766 18.4465C20.561 15.16 20.561 11.84 20.1766 8.55348C20.0678 7.62304 19.3258 6.89645 18.4026 6.79326ZM8.76409 8.28398C11.8943 7.93413 15.1057 7.93413 18.2359 8.28398C18.4733 8.3105 18.6599 8.49821 18.6867 8.72773C19.0576 11.8984 19.0576 15.1016 18.6867 18.2723C18.6599 18.5018 18.4733 18.6895 18.2359 18.716C15.1057 19.0659 11.8943 19.0659 8.76409 18.716C8.52674 18.6895 8.34013 18.5018 8.31329 18.2723C7.94245 15.1016 7.94245 11.8984 8.31329 8.72773C8.34013 8.49821 8.52674 8.3105 8.76409 8.28398Z" fill="#A182C9"/>
+    </svg>`;
+
+    const fileSvgIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M4.25 5C4.25 3.48122 5.48122 2.25 7 2.25H14.9868C15.5506 2.25 16.0798 2.52157 16.4085 2.97955L19.4217 7.17745C19.6352 7.47488 19.75 7.83178 19.75 8.1979V19C19.75 20.5188 18.5188 21.75 17 21.75H7C5.48122 21.75 4.25 20.5188 4.25 19V5ZM7 3.75C6.30964 3.75 5.75 4.30964 5.75 5V19C5.75 19.6904 6.30964 20.25 7 20.25H17C17.6904 20.25 18.25 19.6904 18.25 19V8.89705H15C14.5858 8.89705 14.25 8.56126 14.25 8.14705V3.75H7Z" fill="#A182C9"/>
+</svg>`;
+
+    const folderSvgIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.3612 18.5795C19.9556 18.97 19.4178 19.2212 18.8252 19.2636L17.1873 19.3808C13.7335 19.6279 10.2664 19.6279 6.81252 19.3808L5.29851 19.2725C4.10248 19.1869 3.11598 18.3027 2.90046 17.1232C2.46379 14.7333 2.38904 12.2913 2.6787 9.87915L2.95118 7.61004C3.11289 6.26343 4.25529 5.25 5.61158 5.25H7.90314C9.0209 5.25 9.95216 6.04846 10.1577 7.10612L18.4721 7.10612C19.7785 7.10612 20.8912 8.05533 21.0971 9.34535L21.1612 9.74679C21.1746 9.83114 21.1876 9.91554 21.2001 10H21.5361C23.0085 10 24.0208 11.4798 23.4871 12.8521L22.2377 16.065C21.8497 17.0626 21.1988 17.9301 20.3612 18.5795ZM19.6159 9.58178L19.6799 9.98322C19.6808 9.98881 19.6817 9.99441 19.6826 10H10.3703C9.23463 10 8.21575 10.6981 7.80577 11.7573L5.47393 17.7812L5.40555 17.7763C4.89208 17.7396 4.46856 17.36 4.37603 16.8536C3.9664 14.6116 3.89627 12.3208 4.168 10.058L4.44048 7.78888C4.51167 7.19611 5.01455 6.75 5.61158 6.75H7.90314C8.34319 6.75 8.69991 7.10672 8.69991 7.54677C8.69991 8.13183 9.1742 8.60612 9.75926 8.60612H18.4721C19.0413 8.60612 19.5261 9.0197 19.6159 9.58178ZM7.03908 17.8931C10.3821 18.1266 13.7375 18.1238 17.0803 17.8846L18.7181 17.7674L18.9127 17.7492L18.9113 17.7468C19.7919 17.25 20.4732 16.4636 20.8397 15.5213L22.0891 12.3084C22.2404 11.9195 21.9535 11.5 21.5361 11.5H10.3703C9.85411 11.5 9.39098 11.8173 9.20462 12.2988L7.03908 17.8931Z" fill="#A182C9"/>
+</svg>`;
+
+    document.getElementById('copyIcon').innerHTML = copySvgIcon;
+    document.getElementById('fileIcon').innerHTML = fileSvgIcon;
+    document.getElementById('folderIcon').innerHTML = folderSvgIcon;
+
+    document.getElementById('copyIcon').addEventListener('click', function () {
+      const input = this.previousElementSibling;
+      navigator.clipboard.writeText(input.value).then(() => {
+        document.getElementById('copyMessage').textContent = 'Copied!';
+        setTimeout(function () {
+          document.getElementById('copyMessage').textContent = '';
+          document.getElementById('copyIcon').innerHTML = copySvgIcon;
+        }, 2000);
+      }).catch(err => {
+        console.error('Error in copying text: ', err);
+      });
+    });
+  </script>
+</body>
+
+</html>
